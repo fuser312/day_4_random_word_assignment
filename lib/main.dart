@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:day_4_random_word_assignment/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:english_words/english_words.dart';
 void main() {
   runApp(
     MaterialApp(
@@ -20,13 +20,11 @@ class PasswordGenerator extends StatefulWidget {
 
 class _PasswordGeneratorState extends State<PasswordGenerator> {
   List words = Words.list;
-  String password ="sahil";
+  dynamic password = "";
+
   void viewPassword(){
     setState(() {
-      String string = "";
-      int number = Random().nextInt(Words.list.length);
-      string = string + ' ' + Words.list[number];
-      password = string;
+      password = WordPair.random(random: Random()).asCamelCase;
     });
   }
   @override
